@@ -3,9 +3,6 @@
     "browser": true,
     "node": true
   },
-  "plugins": [
-    "react"
-  ],
   "settings": {
     "ecmascript": 6
   },
