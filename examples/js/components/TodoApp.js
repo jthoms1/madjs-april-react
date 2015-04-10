@@ -1,19 +1,7 @@
-/**
- * Copyright (c) 2014-2015, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
-
-/**
- * This component operates as a "Controller-View".  It listens for changes in
- * the TodoStore and passes the new data to its children.
- */
+'use strict';
 
 var React = require('react');
-var TodoCollection = require('utils/TodoCollection');
+var TodoCollection = require('../utils/TodoCollection');
 var Footer = require('./Footer');
 var Header = require('./Header');
 var MainSection = require('./MainSection');
@@ -31,6 +19,18 @@ var TodoApp = React.createClass({
     return getTodoState();
   },
 
+  componentWillMount() {
+    TodoCollection.addChangeListener(this._onChange);
+  },
+
+  componentWillUnmount: function() {
+    TodoCollection.removeChangeListener(this._onChange);
+  },
+
+  _onChange: function() {
+    this.setState(getTodoState());
+  },
+
   /**
    * @return {object}
    */
@@ -45,10 +45,6 @@ var TodoApp = React.createClass({
         <Footer allTodos={this.state.allTodos} />
       </div>
     );
-  },
-
-  _onChange: function() {
-    this.setState(getTodoState());
   }
 });
 

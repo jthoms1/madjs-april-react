@@ -1,17 +1,10 @@
-/**
- * Copyright (c) 2014-2015, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
+'use strict';
 
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
-var TodoTextInput = require('./TodoTextInput');
-
 var cx = require('react/lib/cx');
+var TodoCollection = require('../utils/TodoCollection');
+var TodoTextInput = require('./TodoTextInput');
 
 var TodoItem = React.createClass({
 
@@ -25,19 +18,16 @@ var TodoItem = React.createClass({
     };
   },
 
-  /**
-   * @return {object}
-   */
   render: function() {
     var todo = this.props.todo;
-
     var input;
+
     if (this.state.isEditing) {
       input =
         <TodoTextInput
           className="edit"
           onSave={this._onSave}
-          value={todo.text}
+          value={todo.title}
         />;
     }
 
@@ -56,7 +46,7 @@ var TodoItem = React.createClass({
             onChange={this._onToggleComplete}
           />
           <label onDoubleClick={this._onDoubleClick}>
-            {todo.text}
+            {todo.title}
           </label>
           <button className="destroy" onClick={this._onDestroyClick} />
         </div>
@@ -66,7 +56,7 @@ var TodoItem = React.createClass({
   },
 
   _onToggleComplete: function() {
-    toggleComplete(this.props.todo);
+    TodoCollection.toggleComplete(this.props.index);
   },
 
   _onDoubleClick: function() {
@@ -80,14 +70,13 @@ var TodoItem = React.createClass({
    * @param  {string} text
    */
   _onSave: function(text) {
-    updateText(this.props.todo.id, text);
+    TodoCollection.updateText(this.props.index, text);
     this.setState({isEditing: false});
   },
 
   _onDestroyClick: function() {
-    destroy(this.props.todo.id);
+    TodoCollection.destroy(this.props.index);
   }
-
 });
 
 module.exports = TodoItem;

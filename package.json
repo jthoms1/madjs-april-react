@@ -29,6 +29,7 @@
   "dependencies": {
     "object-assign": "^2.0.0",
     "react": "^0.13.1",
-    "react-router": "^0.13.1"
+    "react-router": "^0.13.1",
+    "immutable": "^3.7.1"
   }
 }

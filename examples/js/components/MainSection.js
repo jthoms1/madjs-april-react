@@ -1,15 +1,9 @@
-/**
- * Copyright (c) 2014-2015, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
+'use strict';
 
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
 
+var TodoCollection = require('../utils/TodoCollection');
 var TodoItem = require('./TodoItem');
 
 var MainSection = React.createClass({
@@ -23,16 +17,16 @@ var MainSection = React.createClass({
    * @return {object}
    */
   render: function() {
-    if (Object.keys(this.props.allTodos).length < 1) {
+    if (this.props.allTodos.size < 1) {
       return null;
     }
 
     var allTodos = this.props.allTodos;
-    var todos = [];
-
-    for (var key in allTodos) {
-      todos.push(<TodoItem key={key} todo={allTodos[key]} />);
-    }
+    var todos = allTodos.map(function(todo, index) {
+      return (
+        <TodoItem key={index} index={index} todo={allTodos.get(index)} />
+      );
+    });
 
     return (
       <section id="main">
@@ -52,7 +46,7 @@ var MainSection = React.createClass({
    * Event handler to mark all TODOs as complete
    */
   _onToggleCompleteAll: function() {
-    TodoActions.toggleCompleteAll();
+    TodoCollection.toggleAllComplete();
   }
 
 });
