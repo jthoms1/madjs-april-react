@@ -4,13 +4,12 @@ This repository contains slides and code examples for my presentation at MadJS o
 ReactJS
 - Overview
  - View Library by Facebook
- - No Templates for a reason
- - ReactJS at Earthling Interactive
  - Compile step
-- History
-- Why/How use it?
  - Simplicity
  - Speed + Reactive Updates
+ - History
+- Why/How use it?
+ - Speed through rerendering?
  - The Virtual DOM
  - JSX -> Massive advantage over typical HTML (Optional, but don't opt out)
  - custom event system
@@ -23,10 +22,10 @@ ReactJS
  - Composition
  - State updates
 - Extras
- - ES6
+ - React-Art for canvas, svg
  - React-Router
  - ImmutableJS + PureRenderMixin
- - Flux 
+ - Flux
 - Implementation Approach
  - No Greenfield Needed
 
