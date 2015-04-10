@@ -20,10 +20,10 @@ var TodoItem = React.createClass({
 
   render: function() {
     var todo = this.props.todo;
-    var input;
+    var todoTextInput;
 
     if (this.state.isEditing) {
-      input =
+      todoTextInput =
         <TodoTextInput
           className="edit"
           onSave={this._onSave}
@@ -50,7 +50,7 @@ var TodoItem = React.createClass({
           </label>
           <button className="destroy" onClick={this._onDestroyClick} />
         </div>
-        {input}
+        {todoTextInput}
       </li>
     );
   },
