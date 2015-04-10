@@ -1,7 +1,8 @@
 'use strict';
 
-var React = require('react');
+var React = require('react/addons');
 var ReactPropTypes = React.PropTypes;
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 var TodoCollection = require('../utils/TodoCollection');
 var TodoItem = require('./TodoItem');
@@ -37,7 +38,11 @@ var MainSection = React.createClass({
           checked={this.props.areAllComplete ? 'checked' : ''}
         />
         <label htmlFor="toggle-all">Mark all as complete</label>
-        <ul id="todo-list">{todos}</ul>
+        <ul id="todo-list">
+          <ReactCSSTransitionGroup transitionName="todoitem">
+            {todos}
+          </ReactCSSTransitionGroup>
+        </ul>
       </section>
     );
   },

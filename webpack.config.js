@@ -6,12 +6,12 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './examples/js/app'
+    './example/js/app'
   ],
   output: {
-    path: path.join(__dirname, '/examples/'),
+    path: path.join(__dirname, '/example/'),
     filename: 'bundle.js',
-    publicPath: '/examples/'
+    publicPath: '/example/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
