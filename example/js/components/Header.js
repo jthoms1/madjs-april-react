@@ -3,6 +3,7 @@
 var React = require('react');
 var TodoCollection = require('../utils/TodoCollection');
 var TodoTextInput = require('./TodoTextInput');
+var log = require('../utils/logger')('Header');
 
 var Header = React.createClass({
 
@@ -10,6 +11,7 @@ var Header = React.createClass({
    * @return {object}
    */
   render: function() {
+    log('render');
     return (
       <header id="header">
         <h1>todos</h1>
@@ -33,7 +35,6 @@ var Header = React.createClass({
       TodoCollection.create(text);
     }
   }
-
 });
 
 module.exports = Header;

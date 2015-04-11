@@ -2,23 +2,29 @@
 
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
-var cx = require('react/lib/cx');
+var classNames = require('classnames');
 var TodoCollection = require('../utils/TodoCollection');
 var TodoTextInput = require('./TodoTextInput');
 
+var log = require('../utils/logger')('TodoItem');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
+
 var TodoItem = React.createClass({
+  //mixins: [PureRenderMixin],
 
   propTypes: {
    todo: ReactPropTypes.object.isRequired
   },
 
   getInitialState: function() {
+    log('getIntialState');
     return {
       isEditing: false
     };
   },
 
   render: function() {
+    log('render');
     var todo = this.props.todo;
     var todoTextInput;
 
@@ -33,7 +39,7 @@ var TodoItem = React.createClass({
 
     return (
       <li
-        className={cx({
+        className={classNames({
           'completed': todo.complete,
           'editing': this.state.isEditing
         })}

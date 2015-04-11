@@ -5,6 +5,7 @@ var TodoCollection = require('../utils/TodoCollection');
 var Footer = require('./Footer');
 var Header = require('./Header');
 var MainSection = require('./MainSection');
+var log = require('../utils/logger')('TodoApp');
 
 function getTodoState() {
   return {
@@ -16,14 +17,17 @@ function getTodoState() {
 var TodoApp = React.createClass({
 
   getInitialState: function() {
+    log('getInitialState');
     return getTodoState();
   },
 
   componentWillMount() {
+    log('componentWillMount');
     TodoCollection.addChangeListener(this._onChange);
   },
 
   componentWillUnmount: function() {
+    log('componentWillUnmount');
     TodoCollection.removeChangeListener(this._onChange);
   },
 
@@ -35,6 +39,7 @@ var TodoApp = React.createClass({
    * @return {object}
    */
   render: function() {
+    log('render');
     return (
       <div>
         <Header />

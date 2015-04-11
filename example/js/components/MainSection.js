@@ -3,6 +3,7 @@
 var React = require('react/addons');
 var ReactPropTypes = React.PropTypes;
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var log = require('../utils/logger')('MainSection');
 
 var TodoCollection = require('../utils/TodoCollection');
 var TodoItem = require('./TodoItem');
@@ -18,6 +19,7 @@ var MainSection = React.createClass({
    * @return {object}
    */
   render: function() {
+    log('render');
     if (this.props.allTodos.size < 1) {
       return null;
     }
@@ -53,7 +55,6 @@ var MainSection = React.createClass({
   _onToggleCompleteAll: function() {
     TodoCollection.toggleAllComplete();
   }
-
 });
 
 module.exports = MainSection;

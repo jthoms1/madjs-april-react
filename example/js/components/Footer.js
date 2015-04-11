@@ -2,6 +2,7 @@
 
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
+var log = require('../utils/logger')('Footer');
 
 var TodoCollection = require('../utils/TodoCollection');
 
@@ -15,6 +16,7 @@ var Footer = React.createClass({
    * @return {object}
    */
   render: function() {
+    log('render');
     var allTodos = this.props.allTodos;
     var total = allTodos.size;
 

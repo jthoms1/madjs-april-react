@@ -9,11 +9,11 @@
 
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
+var log = require('../utils/logger')('TodoTextInput');
 
 var ENTER_KEY_CODE = 13;
 
 var TodoTextInput = React.createClass({
-
   propTypes: {
     className: ReactPropTypes.string,
     id: ReactPropTypes.string,
@@ -23,6 +23,7 @@ var TodoTextInput = React.createClass({
   },
 
   getInitialState: function() {
+    log('getInitialState');
     return {
       value: this.props.value || ''
     };
@@ -32,6 +33,7 @@ var TodoTextInput = React.createClass({
    * @return {object}
    */
   render: function() /*object*/ {
+    log('render');
     return (
       <input
         className={this.props.className}
@@ -74,7 +76,6 @@ var TodoTextInput = React.createClass({
       this._save();
     }
   }
-
 });
 
 module.exports = TodoTextInput;
