@@ -12,13 +12,13 @@ var todoList = Immutable.List();
 
 var TodoCollection = assign({}, EventEmitter.prototype, {
 
-  emitChange() {
+  emitChange: function () {
     this.emit('change');
   },
-  addChangeListener(callback) {
+  addChangeListener: function (callback) {
     this.on('change', callback);
   },
-  removeChangeListener(callback) {
+  removeChangeListener: function (callback) {
     this.removeListener('change', callback);
   },
 
