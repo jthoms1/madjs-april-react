@@ -31,12 +31,12 @@
           margin: 0;
       }
       .reveal section img.roundup {
-          border: 3px solid #fff;
-          height: 60px;
-    	    width: 60px;
-    	    border-radius: 33px;
+          border: 2px solid #fff;
+          height: 40px;
+    	    width: 40px;
+    	    border-radius: 23px;
     	    display: block;
-    	    margin: 0 auto;
+    	    margin: -15px auto 0;
       }
     </style>
 
@@ -54,7 +54,13 @@
         <section>
           <h1>ReactJS</h1>
           <p>
-            <small>Josh Thomas / <a href="http://twitter.com/jthoms1">@jthoms1</a></small>
+            <small>
+              Josh Thomas / <a href="http://twitter.com/jthoms1">@jthoms1</a>
+              <img style="display: inline-block; width: 40px; margin-top: -4px; margin-left: 5px"
+                class="nostyle"
+                src="images/twitter-logo.png"
+              />
+            </small>
             <img class="roundup" src="images/jthoms1-logo.png" alt="archer" />
           </p>
         </section>
@@ -63,9 +69,15 @@
           <h2>What is React<img class="nostyle" width="60" height="60" src="images/react-logo.svg" />?</h2>
           <ul>
             <li>View rendering and interaction</li>
-            <li>Created by Facebook</li>
-            <li>Support for IE8+</li>
+            <li>Created by <img class="nostyle" width="200" src="images/Facebook-logo.png"</li>
       	  </ul>
+        </section>
+
+        <section data-transition="zoom">
+          <h2>Shared view code on server and client</h2>
+          <p>
+            <img src="images/karben4-fantasy-factory.jpg"/>
+          </p>
         </section>
 
         <section>
@@ -74,9 +86,68 @@
             <li class="fragment fade-in">Simplicity</li>
             <li class="fragment fade-in">Speed</li>
           </ul>
+        </section>
+
+        <section>
+          <h2>React Components</h2>
+          <ul>
+            <li class="fragment fade-in">View + Controller</li>
+            <li class="fragment fade-in">Composition through nesting Components</li>
+            <li class="fragment fade-in">State Machines</li>
+            <li class="fragment fade-in">Props</li>
+          </ul>
           <br>
           <br>
-          <p class="fragment fade-in">Rerender on state change</p>
+          <p class="fragment fade-in">Top Down data flow</p>
+        </section>
+
+        <section>
+          <h2>Stateful Component</h2>
+          <pre><code data-trim>
+var Hello = React.createClass({
+  getInitialState: function() {
+    return { name: 'Josh' }
+  },
+  render: function () {
+    return <div>Hello {this.state.name}</div>
+  }
+});
+          </code></pre>
+
+          <p class="fragment fade-in">
+            Changing state on a component will re-render it.
+          </p>
+        </section>
+
+        <section>
+          <h2>Pure Component</h2>
+          <pre><code data-trim>
+var HelloContainer = React.createClass({
+  getInitialState: function() {
+    return { name: 'Josh' }
+  },
+  render: function () {
+    return &#x3C;Hello name={this.state.name} /&#x3E;
+  }
+});
+
+var Hello = React.createClass({
+  render: function () {
+    return &#x3C;div&#x3E;Hello {this.props.name}&#x3C;/div&#x3E;
+  }
+});
+          </code></pre>
+
+          <p class="fragment fade-in">
+            Rendering a component will prompt a render on all child components.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Application State should be held by high level components.
+          </p>
+          <img class="fragment fade-in" width="700" src="images/wat.jpg" />
         </section>
 
         <section data-transition="zoom">
@@ -98,13 +169,19 @@ renderB: <div id="after">Hello</div>
           </code></pre>
 
           <pre class="fragment fade-in"><code data-trim>
+renderA: <div id="before">Hello</div>
+renderB: <div id="before">Hello</div>
+
+=> []
+          </code></pre>
+
+          <pre class="fragment fade-in"><code data-trim>
 renderA: <div><span>first</span></div>
 renderB: <div><span>first</span><span>second</span></div>
 
 => [insertNode <span>second</span>]
           </code></pre>
 
-          <p class="fragment fade-in">Batched updates!</p>
         </section>
 
         <section>
@@ -121,32 +198,28 @@ React.render(
         </section>
 
         <section>
-          <h2>Composition</h2>
+          <h2>JSX</h2>
           <pre class="fragment fade-in"><code data-trim>
-render: function() {
-  return (
-  &#x3C;div&#x3E;
-    &#x3C;Header /&#x3E;
-    &#x3C;MainSection
-      allTodos={this.state.allTodos}
-      areAllComplete={this.state.areAllComplete}
-    /&#x3E;
-    &#x3C;Footer allTodos={this.state.allTodos} /&#x3E;
-  &#x3C;/div&#x3E;
-  );
-}
+var HelloContainer = React.createClass({
+  getInitialState: function() {
+    return { name: 'Josh' }
+  },
+  render: function () {
+    return &#x3C;Hello name={this.state.name} /&#x3E;
+  }
+});
           </code></pre>
           <pre class="fragment fade-in"><code data-trim>
-render: function render() {
-  return React.createElement("div", null,
-    React.createElement(Header, null),
-    React.createElement(MainSection, {
-      allTodos: this.state.allTodos,
-      areAllComplete: this.state.areAllComplete
-    }),
-    React.createElement(Footer, { allTodos: this.state.allTodos })
-  );
-}
+var HelloContainer = React.createClass({
+  getInitialState: function() {
+    return { name: 'Josh' }
+  },
+  render: function () {
+    return React.createElement(Hello, {
+      name: this.state.name
+    });
+  }
+});
           </code></pre>
         </section>
 
@@ -158,36 +231,23 @@ render: function render() {
         </section>
 
         <section>
-          <h2>React Components</h2>
-          <ul>
-            <li class="fragment fade-in">State Machines</li>
-            <li class="fragment fade-in">API is lifecycle methods
-              <ul class="fragment fade-in">
-                <li>get initial state</li>
-                <li>mount component</li>
-                <li>render</li>
-                <li>unmount component if no longer needed</li>
-              </ul>
-            </li>
-            <li class="fragment fade-in">Custom Event System
-            <ul class="fragment fade-in">
-              <li>Event delegation at mount point</li>
-              <li class="fragment fade-in">Normalizes events across all browsers</li>
-              <li class="fragment fade-in">Events types: Clipboard, Keyboard, Focus, Form, Mouse, Touch, Scroll</li>
-            </ul>
-            </li>
-          </ul>
+          <h2>Live Demo</h2>
+          <img style="display: inline-block; margin-bottom: -19px; margin-right: 10px"
+            class="nostyle" src="images/github-logo.png" />
+          <a href="https://github.com/jthoms1/madjs-april-react">github.com/jthoms1/madjs-april-react</a>
         </section>
 
         <section>
-          <h2>Live Demo</h2>
+          <h2><img class="nostyle" src="images/immutable-logo.png" /></h2>
+          <p>
+            shouldComponentUpdate or PureRenderMixin
+          </p>
         </section>
 
         <section>
           <h2>Helper Libs</h2>
           <ul>
             <li>React-Router</li>
-            <li>ImmutableJS + PureRenderMixin</li>
             <li>Flux</li>
           </ul>
         </section>
@@ -195,14 +255,20 @@ render: function render() {
         <section>
           <h2>Extras</h2>
           <ul>
+            <li>React Native</li>
             <li>Server Side Rendering</li>
             <li>React-Art</li>
-            <li>React Native</li>
+            <li>React-A11y</li>
           </ul>
         </section>
 
         <section>
           <h2>Questions?</h2>
+          <ul>
+            <li><a href="https://facebook.github.io/react">https://facebook.github.io/react</a></li>
+            <li><a href="http://react.parts">http://react.parts</a><li>
+            <li><a href="http://facebook.github.io/flux">http://facebook.github.io/flux</a></li>
+            <li><a href="https://github.com/rackt/react-router">https://github.com/rackt/react-router</a></li>
         </section>
 
       </div>
