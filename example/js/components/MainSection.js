@@ -2,7 +2,6 @@
 
 var React = require('react/addons');
 var ReactPropTypes = React.PropTypes;
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 var log = require('../utils/logger')('MainSection');
 
 var TodoCollection = require('../utils/TodoCollection');
@@ -41,9 +40,7 @@ var MainSection = React.createClass({
         />
         <label htmlFor="toggle-all">Mark all as complete</label>
         <ul id="todo-list">
-          <ReactCSSTransitionGroup transitionName="todoitem">
-            {todos}
-          </ReactCSSTransitionGroup>
+          {todos}
         </ul>
       </section>
     );

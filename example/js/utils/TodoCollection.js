@@ -8,7 +8,6 @@ var Todo = Immutable.Record({
     title: undefined,
     complete: false
 });
-
 var todoList = Immutable.List();
 
 var TodoCollection = assign({}, EventEmitter.prototype, {

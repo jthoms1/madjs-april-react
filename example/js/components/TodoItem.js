@@ -10,7 +10,7 @@ var log = require('../utils/logger')('TodoItem');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var TodoItem = React.createClass({
-  //mixins: [PureRenderMixin],
+  mixins: [PureRenderMixin],
 
   propTypes: {
    todo: ReactPropTypes.object.isRequired
