@@ -8,7 +8,16 @@ var Todo = Immutable.Record({
     title: undefined,
     complete: false
 });
-var todoList = Immutable.List();
+var todos = [];
+/*
+for (var i = 1; i< 1001;i += 1) {
+  todos.push(new Todo({
+    title: 'todo #' + i
+  }));
+}
+*/
+var todoList = Immutable.List(todos);
+
 
 var TodoCollection = assign({}, EventEmitter.prototype, {
 

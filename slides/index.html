@@ -115,7 +115,7 @@ var Hello = React.createClass({
           </code></pre>
 
           <p class="fragment fade-in">
-            Changing state on a component will re-render it.
+            Changing state on a component will cause it to re-render.
           </p>
         </section>
 
@@ -139,13 +139,14 @@ var Hello = React.createClass({
           </code></pre>
 
           <p class="fragment fade-in">
-            Rendering a component will prompt a render on all child components.
+            Changing state on a component will cause it to re-render <br>
+            <b>and all its child components to re-render</b>.
           </p>
         </section>
 
         <section>
           <p>
-            Application State should be held by high level components.
+            An application's state should be held by the highest components.
           </p>
           <img class="fragment fade-in" width="700" src="images/wat.jpg" />
         </section>
@@ -199,7 +200,7 @@ React.render(
 
         <section>
           <h2>JSX</h2>
-          <pre class="fragment fade-in"><code data-trim>
+          <pre><code data-trim>
 var HelloContainer = React.createClass({
   getInitialState: function() {
     return { name: 'Josh' }
@@ -231,22 +232,16 @@ var HelloContainer = React.createClass({
         </section>
 
         <section>
-          <h2>Live Demo</h2>
+          <p>TodoMVC ahead</p>
           <img style="display: inline-block; margin-bottom: -19px; margin-right: 10px"
             class="nostyle" src="images/github-logo.png" />
           <a href="https://github.com/jthoms1/madjs-april-react">github.com/jthoms1/madjs-april-react</a>
         </section>
 
         <section>
-          <h2><img class="nostyle" src="images/immutable-logo.png" /></h2>
-          <p>
-            shouldComponentUpdate or PureRenderMixin
-          </p>
-        </section>
-
-        <section>
           <h2>Helper Libs</h2>
           <ul>
+            <li>ImmutableJS</li>
             <li>React-Router</li>
             <li>Flux</li>
           </ul>
@@ -263,10 +258,17 @@ var HelloContainer = React.createClass({
         </section>
 
         <section>
+          <h2>Greenfield not needed.</h2>
+          <img src="images/greenfield.jpg" />
+          <p>You can use in your existing applications.</p>
+        </section>
+
+        <section>
           <h2>Questions?</h2>
+          <br/>
           <ul>
             <li><a href="https://facebook.github.io/react">https://facebook.github.io/react</a></li>
-            <li><a href="http://react.parts">http://react.parts</a><li>
+            <li><a href="http://react.parts">http://react.parts</a></li>
             <li><a href="http://facebook.github.io/flux">http://facebook.github.io/flux</a></li>
             <li><a href="https://github.com/rackt/react-router">https://github.com/rackt/react-router</a></li>
         </section>
