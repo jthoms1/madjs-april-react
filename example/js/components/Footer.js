@@ -17,6 +17,7 @@ var Footer = React.createClass({
    */
   render: function() {
     log('render');
+    log('-----------------------------------------------------');
     var allTodos = this.props.allTodos;
     var total = allTodos.size;
 
