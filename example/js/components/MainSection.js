@@ -2,7 +2,7 @@
 
 var React = require('react/addons');
 var ReactPropTypes = React.PropTypes;
-var log = require('../utils/logger')('MainSection');
+var log = require('../utils/logger')('MainSection', '#d33682');
 
 var TodoCollection = require('../utils/TodoCollection');
 var TodoItem = require('./TodoItem');

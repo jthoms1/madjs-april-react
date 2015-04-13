@@ -1,7 +1,9 @@
 'use strict';
 
-module.exports = function (moduleName) {
+module.exports = function (moduleName, color) {
+  color = color || '#333333';
+
   return function (value) {
-    console.log(moduleName + ': ' + value);
+    console.log('%c' + moduleName + ': ' + value, 'color: ' + color);
   };
 };

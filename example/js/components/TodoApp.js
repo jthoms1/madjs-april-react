@@ -5,7 +5,7 @@ var TodoCollection = require('../utils/TodoCollection');
 var Footer = require('./Footer');
 var Header = require('./Header');
 var MainSection = require('./MainSection');
-var log = require('../utils/logger')('TodoApp');
+var log = require('../utils/logger')('TodoApp', '#b58900');
 
 function getTodoState() {
   return {

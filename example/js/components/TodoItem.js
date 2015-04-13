@@ -6,7 +6,7 @@ var classNames = require('classnames');
 var TodoCollection = require('../utils/TodoCollection');
 var TodoTextInput = require('./TodoTextInput');
 
-var log = require('../utils/logger')('TodoItem');
+var log = require('../utils/logger')('TodoItem', '#268bd2');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 function shallowEqual(objA, objB) {

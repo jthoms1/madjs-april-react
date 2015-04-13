@@ -2,7 +2,7 @@
 
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
-var log = require('../utils/logger')('Footer');
+var log = require('../utils/logger')('Footer', '#6c71c4');
 
 var TodoCollection = require('../utils/TodoCollection');
 
@@ -67,4 +67,3 @@ var Footer = React.createClass({
 });
 
 module.exports = Footer;
-

@@ -2,7 +2,7 @@
 
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
-var log = require('../utils/logger')('TodoTextInput');
+var log = require('../utils/logger')('TodoTextInput', '#859900');
 
 var ENTER_KEY_CODE = 13;
 

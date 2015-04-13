@@ -3,7 +3,7 @@
 var React = require('react');
 var TodoCollection = require('../utils/TodoCollection');
 var TodoTextInput = require('./TodoTextInput');
-var log = require('../utils/logger')('Header');
+var log = require('../utils/logger')('Header', '#cb4b16');
 
 var Header = React.createClass({
 
