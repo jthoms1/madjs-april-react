@@ -115,7 +115,7 @@ var Hello = React.createClass({
           </code></pre>
 
           <p class="fragment fade-in">
-            Changing state on a component will cause it to re-render.
+            Changing state on a component will cause it to re-render
           </p>
         </section>
 
@@ -140,19 +140,23 @@ var Hello = React.createClass({
 
           <p class="fragment fade-in">
             Changing state on a component will cause it to re-render <br>
-            <b>and all its child components to re-render</b>.
+            <b class="fragment fade-in">and all its child components to re-render</b>.
           </p>
         </section>
 
         <section>
           <p>
-            An application's state should be held by the highest components.
+            Push state to the top for simplicity.<br/>
+            Rerender and don't worry about the implications.
           </p>
           <img class="fragment fade-in" width="700" src="images/wat.jpg" />
         </section>
 
         <section data-transition="zoom">
           <h2>Virtual DOM</h2>
+          <p>
+            Performat rendering through patch updates.
+          </p>
           <p class="fragment fade-in">
             <img src="images/magic.jpg"/>
           </p>
