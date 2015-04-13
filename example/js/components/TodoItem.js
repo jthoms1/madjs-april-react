@@ -7,7 +7,6 @@ var TodoCollection = require('../utils/TodoCollection');
 var TodoTextInput = require('./TodoTextInput');
 
 var log = require('../utils/logger')('TodoItem', '#268bd2');
-var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 function shallowEqual(objA, objB) {
   if (objA === objB) {
@@ -49,14 +48,15 @@ var TodoItem = React.createClass({
       isEditing: false
     };
   },
-/*
+  /*
   shouldComponentUpdate: function(nextProps, nextState) {
     return (
       !shallowEqual(this.props, nextProps) ||
       !shallowEqual(this.state, nextState)
     );
   },
-*/
+  */
+
   render: function() {
     log('render');
     var todo = this.props.todo;

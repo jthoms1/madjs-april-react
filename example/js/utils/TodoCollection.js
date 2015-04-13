@@ -10,12 +10,13 @@ var Todo = Immutable.Record({
 });
 var todos = [];
 /*
-for (var i = 1; i< 1001;i += 1) {
+for (var i = 1; i < 1001; i += 1) {
   todos.push(new Todo({
     title: 'todo #' + i
   }));
 }
 */
+
 var todoList = Immutable.List(todos);
 
 
